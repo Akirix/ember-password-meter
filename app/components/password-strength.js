@@ -1,0 +1,1 @@
+export { default } from 'ember-password-meter/components/password-strength';
