@@ -6,7 +6,6 @@ const { Component, computed } = Ember;
 export default Component.extend( {
     layout,
     password: '',
-    allowBadPassword: false,
 
     strength: computed( 'password', function(){
         return zxcvbn( this.get( 'password' ) );
