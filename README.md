@@ -1,6 +1,4 @@
 # Ember-password-meter
-
-
 An Ember-CLI wrapper for [zxcvbn](https://github.com/dropbox/zxcvbn) with a stylized password meter.
 
 More information about zxcvbn can be found [here](https://github.com/dropbox/zxcvbn#usage).
@@ -8,11 +6,11 @@ More information about zxcvbn can be found [here](https://github.com/dropbox/zxc
 ## Installation
 
 * Add `"ember-password-meter": "git+https://github.com/Akirix/ember-password-meter.git",` to your _package.json_ file  
+* `npm install`
 * `bower install zxcvbn` if it fails to install with this addon  
 * Optionally, `ember install ember-validations` if you'd like to use the included `password-strength` validator.
 
 ## Usage w/example
-* In your controller `import EmberPasswordMeter from "ember-password-meter/mixins/ember-password-meter-controller";`
 * Add `{{password-strength password=password}}` below your password input and pass it the `value` from the input helper.
 
 ```html
@@ -24,20 +22,30 @@ More information about zxcvbn can be found [here](https://github.com/dropbox/zxc
 </div>
 ```
 
-* This addon has also been designed to play nicely with [ember-validations](https://github.com/DockYard/ember-validations) with the included property, `allowBadPassword` set 
-  to false by default. You can override this to `true` to bypass validations or simply remove the validation and still have a working meter. The benefit of having the property
-  available outside of the validator is that you can allow users to acknowledge that they have a bad password but proceed anyway, or force them to improve their password.
+## Validations (optional)
+This addon has been designed to play nicely with [ember-validations](https://github.com/DockYard/ember-validations) with the included property, `allowBadPassword` set 
+to `false` by default. This allows you to have a toggle switch/checkbox on the front end. A use case may be an administrator who wants to enable/disable the ability for users to have a bad password.
+
+* `ember install ember-validations`
+* In your controller `import EmberValidations from 'ember-validations';`  
+* Add the `strongPassword` validator to your validations object for your password property:  
+**Example:**
 
 ```javascript
-export default Ember.Controller.extend( EmberPasswordMeter, {
-    allowBadPassword: true,  // default is false
+import Ember from 'ember';
+import EmberValidations from 'ember-validations';
 
+export default Ember.Controller.extend( EmberValidations.Mixin, {
+    password: '',
+    allowBadPassword: true,  // default is false
+    
     validations: {
         password: {
             presence: true,
             strongPassword: true
         }
     },
+    ...
 ```
 
 # Developers
