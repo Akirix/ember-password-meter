@@ -7,7 +7,7 @@ More information about zxcvbn can be found [here](https://github.com/dropbox/zxc
 
 ## Installation
 
-* Add `"ember-password-meter": "git+https://github.com/Akirix/ember-password-meter.git",` to your _packge.json_ file  
+* Add `"ember-password-meter": "git+https://github.com/Akirix/ember-password-meter.git",` to your _package.json_ file  
 * `bower install zxcvbn` if it fails to install with this addon  
 * Optionally, `ember install ember-validations` if you'd like to use the included `password-strength` validator.
 
