@@ -9,10 +9,11 @@ More information about zxcvbn can be found [here](https://github.com/dropbox/zxc
 
 * Add `"ember-password-meter": "git+https://github.com/Akirix/ember-password-meter.git",` to your _packge.json_ file  
 * `bower install zxcvbn` if it fails to install with this addon  
+* Optionally, `ember install ember-validations` if you'd like to use the included `password-strength` validator.
 
-## Usage w/example  
-Simply add `{{password-strength password=password}}` below your password input and pass it the `value` from the input helper.
-You can also 
+## Usage w/example
+* In your controller `import EmberPasswordMeter from "ember-password-meter/mixins/ember-password-meter-controller";`
+* Add `{{password-strength password=password}}` below your password input and pass it the `value` from the input helper.
 
 ```html
     <div class="form-group col-md-6">
@@ -23,8 +24,20 @@ You can also
 </div>
 ```
 
-This addon has also been designed to play nicely with [ember-validations](https://github.com/DockYard/ember-validations) with the included property, `allowBadPassword` set 
-to false by default. You can override this to be `true` to bypass validations during development.  
+* This addon has also been designed to play nicely with [ember-validations](https://github.com/DockYard/ember-validations) with the included property, `allowBadPassword` set 
+  to false by default. You can override this to `true` to bypass validations and still have a working meter.
+
+```javascript
+export default Ember.Controller.extend( EmberPasswordMeter, {
+    allowBadPassword: true,  // default is false
+
+    validations: {
+        password: {
+            presence: true,
+            strongPassword: true
+        }
+    },
+```
 
 # Developers
 
