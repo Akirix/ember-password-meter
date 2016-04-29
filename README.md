@@ -25,7 +25,8 @@ More information about zxcvbn can be found [here](https://github.com/dropbox/zxc
 ```
 
 * This addon has also been designed to play nicely with [ember-validations](https://github.com/DockYard/ember-validations) with the included property, `allowBadPassword` set 
-  to false by default. You can override this to `true` to bypass validations and still have a working meter.
+  to false by default. You can override this to `true` to bypass validations or simply remove the validation and still have a working meter. The benefit of having the property
+  available outside of the validator is that you can allow users to acknowledge that they have a bad password but proceed anyway, or force them to improve their password.
 
 ```javascript
 export default Ember.Controller.extend( EmberPasswordMeter, {
